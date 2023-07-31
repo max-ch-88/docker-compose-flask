@@ -10,7 +10,7 @@
     - name: Web-page request {{ host + ':' + port }}
       ansible.builtin.uri:
         url: http://{{ host }}:{{ port }}
-        timeout: 1
+        timeout: 10
         return_content: true
       register: result
     - name: Check response
