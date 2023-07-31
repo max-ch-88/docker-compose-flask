@@ -84,3 +84,18 @@ Stopping dockercomposeflask_nginx_1 ... done
 Stopping dockercomposeflask_web_1   ... done
 Stopping dockercomposeflask_redis_1 ... done
 ```
+
+## Tests
+
+Unit tests
+
+```sh
+ansible-playbook ./tests/nginx_unit_test.yml
+ansible-playbook ./tests/web_unit_test.yml
+```
+
+Contract test
+
+```sh
+ansible-playbook ./tests/contract_test.yml
+```
