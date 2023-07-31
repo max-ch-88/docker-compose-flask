@@ -1,0 +1,14 @@
+---
+- name: Nginx unit test
+  vars:
+    host: "127.0.0.1"
+    port: "80"
+  hosts: "{{ host }}"
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Check Nginx {{ host + ':' + port }}
+      ansible.builtin.wait_for:
+        host: "{{ host }}"
+        port: "{{ port }}"
+        timeout: 1

@@ -1,0 +1,14 @@
+---
+- name: Web unit test
+  vars:
+    host: "127.0.0.1"
+    port: "8000"
+  hosts: "{{ host }}"
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Web-page request {{ host + ':' + port }}
+      ansible.builtin.uri:
+        url: http://{{ host }}:{{ port }}
+        timeout: 1
+        return_content: true

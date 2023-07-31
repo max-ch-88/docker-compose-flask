@@ -1,0 +1,20 @@
+---
+- name: Contract test
+  vars:
+    host: "127.0.0.1"
+    port: "80"
+  hosts: "{{ host }}"
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Web-page request {{ host + ':' + port }}
+      ansible.builtin.uri:
+        url: http://{{ host }}:{{ port }}
+        timeout: 1
+        return_content: true
+      register: result
+    - name: Check response
+      ansible.builtin.assert:
+        that:
+          - result.status == 200
+          - '"Hello Container World!" in result.content'
