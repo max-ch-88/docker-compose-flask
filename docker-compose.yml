@@ -4,11 +4,19 @@ services:
   redis:
     image: redis:buster
 
-  web:
+  web1:
     build:
       context: ./web/
     ports:
       - "8000:8000"
+    links:
+      - redis
+
+  web2:
+    build:
+      context: ./web/
+    ports:
+      - "8001:8000"
     links:
       - redis
 
@@ -18,4 +26,5 @@ services:
     ports:
       - "80:80"
     links:
-      - web
+      - web1
+      - web2
