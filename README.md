@@ -45,12 +45,12 @@ OpenSSL version: OpenSSL 1.0.2j  26 Sep 2016
 ### build and up
 
 ```sh
-$ git clone https://github.com/xiaopeng163/docker-compose-flask
 $ cd docker-compose-flask
 $ docker-compose build
 $ docker-compose up -d
 Starting dockercomposeflask_redis_1 ... done
-Starting dockercomposeflask_web_1 ... done
+Starting dockercomposeflask_web1_1 ... done
+Starting dockercomposeflask_web2_1 ... done
 Starting dockercomposeflask_nginx_1 ... done
 ```
 
@@ -60,9 +60,10 @@ Check the service running information
 $ docker-compose ps
            Name                         Command               State           Ports
 --------------------------------------------------------------------------------------------
-dockercomposeflask_nginx_1   /usr/sbin/nginx                  Up      0.0.0.0:80->80/tcp
-dockercomposeflask_redis_1   docker-entrypoint.sh redis ...   Up      6379/tcp
-dockercomposeflask_web_1     /runserver.sh                    Up      0.0.0.0:8000->8000/tcp
+docker-compose-flask-nginx-1   /usr/sbin/nginx                  Up      0.0.0.0:80->80/tcp
+docker-compose-flask-redis-1   docker-entrypoint.sh redis ...   Up      6379/tcp
+docker-compose-flask-web1-1    /runserver.sh                    Up      0.0.0.0:8000->8000/tcp
+docker-compose-flask-web2-1    /runserver.sh                    Up      0.0.0.0:8001->8000/tcp
 ```
 
 Check the web service
@@ -81,7 +82,8 @@ Hello Container World! I have been seen 3 times and my hostname is 09ad15ad1b51.
 ```sh
 $ docker-compose stop
 Stopping dockercomposeflask_nginx_1 ... done
-Stopping dockercomposeflask_web_1   ... done
+Stopping dockercomposeflask_web1_1  ... done
+Stopping dockercomposeflask_web2_1  ... done
 Stopping dockercomposeflask_redis_1 ... done
 ```
 
